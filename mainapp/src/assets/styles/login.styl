@@ -1,0 +1,27 @@
+.login
+  height 100vh
+  background-image: url('../images/login_bg.png')
+  background-size: 100% auto
+  background-position: center center
+  display flex
+  justify-content: center
+  align-items: center
+  &-box
+    width 400px
+    height 430px
+    // transform: translate3d(0, 30%,0)
+    animation slideup .8s
+  .login-logo
+    font-size: 40px
+    // padding 0 0 20px
+  .logoimg
+    width 100px
+    height 100px
+    background transparent
+    margin 0
+
+@keyframes slideup
+  0%
+    transform: translate3d(0, 20%, 0)
+  100%
+    transform: translate3d(0, 0, 0)
