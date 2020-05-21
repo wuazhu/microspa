@@ -7,7 +7,7 @@ import routes from "./router/index"
 import store from "./store"
 
 import actions from './shared/actions'
-
+import SharedModule from './shared/index'
 Vue.use(VueRouter)
 Vue.config.productionTip = false
 
@@ -23,6 +23,9 @@ function render(props) {
     // 注入 actions 实例
     actions.setActions(props)
   }
+  //使用shared通信
+  const { shared = SharedModule.getShared() } = props
+  SharedModule.overloadShared(shared)
   // 在 render 中创建 VueRouter，可以保证在卸载微应用时，移除 location 事件监听，防止事件污染
   router = new VueRouter({
     // 运行在主应用中时，添加路由命名空间 /vue

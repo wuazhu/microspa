@@ -40,6 +40,12 @@
             @click="login"
             :loading="loading"
           >登录</el-button>
+          <el-button
+            type="primary"
+            class="block"
+            @click="loginByShared"
+            :loading="loading"
+          >登录loginByShared</el-button>
         </el-form-item>
       </el-form>
     </div>
@@ -48,7 +54,7 @@
 
 <script>
 import actions from '@/shared/actions'
-
+import shared from '@/shared/index'
 export default {
   data() {
     return {
@@ -67,6 +73,19 @@ export default {
     })
   },
   methods: {
+    async loginByShared() {
+      this.loading = true
+      // const token = 'istoken'
+      shared.setToken({
+        islogin: true,
+        randomId: Math.random(),
+        username: this.loginForm.username,
+        password: this.loginForm.password,
+        changestate: ''
+      })
+      this.loading = false
+      this.$router.push('/')
+    },
     async login() {
       this.loading = true
       // console.log(params)

@@ -1,6 +1,6 @@
 import Vue from "vue"
 import VueRouter from "vue-router"
-
+import { injectTable } from '../shared'
 const Home = () => import(/* webpackChunkName: "portal" */ "../views/Home.vue")
 const Login = () => import(/* webpackChunkName: "portal" */ "../views/Login.vue")
 
@@ -27,5 +27,8 @@ const router = new VueRouter({
   // base: process.env.BASE_URL,
   routes
 })
+
+// 主应用路由挂载到shared
+injectTable.injectRouter(router)
 
 export default router
